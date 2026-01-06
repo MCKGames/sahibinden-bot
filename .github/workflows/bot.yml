@@ -25,10 +25,10 @@ jobs:
           CHAT_ID: ${{ secrets.CHAT_ID }}
         run: python main.py
 
-      - name: Seen dosyayı kaydet
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "actions@github.com"
-          git add seen_ads.json
-          git commit -m "Yeni ilanlar kaydedildi" || echo "Değişiklik yok"
-          git push
+     - name: Seen dosyayı kaydet
+           run: |
+             git config --global user.name "github-actions"
+             git config --global user.email "actions@github.com"
+             git add seen_ads.json || echo "Dosya yok, ilk çalıştırma olabilir"
+             git commit -m "Yeni ilanlar kaydedildi" || echo "Commit edilecek değişiklik yok"
+             git push || echo "Push edilecek bir şey yok"
